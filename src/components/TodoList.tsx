@@ -6,6 +6,7 @@ interface ITodoList {
 }
 
 const TodoList: React.FC<ITodoList> = ({todos}) => {
+  console.log(todos);
   return (
     <ul>
       <TodoListItem />
