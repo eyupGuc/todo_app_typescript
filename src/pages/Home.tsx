@@ -1,10 +1,9 @@
 import axios from "axios";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputForm from "../components/InputForm";
 import TodoList from "../components/TodoList";
 const url = "https://63aad50bfdc006ba604d4b4a.mockapi.io/todos";
-
 
 const Home = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
@@ -17,7 +16,9 @@ const Home = () => {
       console.log(e);
     }
   };
-  getTodos();
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   return (
     <div className="main">
