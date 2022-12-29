@@ -45,10 +45,18 @@ getTodos()
     }
   }
 
+  const deleteTodo:DeleteFn = async (id)=>{
+    try{
+await axios.delete(`${url}/${id}`)
+getTodos();
+
+    }catch(e){console.log(e);}
+  }
+
   return (
     <div className="main">
       <InputForm addTodo={addTodo}/>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </div>
   );
 };
