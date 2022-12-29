@@ -12,6 +12,7 @@ const Home = () => {
     try {
       const { data } = await axios.get<TodoType[]>(url);
       console.log(data);
+      setTodos(data);
     } catch (e) {
       console.log(e);
     }
