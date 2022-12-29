@@ -10,6 +10,7 @@ const url = "https://63aad50bfdc006ba604d4b4a.mockapi.io/todos";
 const Home = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
 
+
   const getTodos = async () => {
     try {
       const { data } = await axios.get<TodoType[]>(url);
@@ -52,15 +53,18 @@ getTodos();
 
     }catch(e){console.log(e);}
   }
-const editTodo:ToggleFn=(item)=>{
+const editTodo:ToggleFn=async(item)=>{
   console.log(item);
-  try{}catch(e){
+  try{
+
+
+  }catch(e){
     console.log(e)
   }
 }
   return (
     <div className="main">
-      <InputForm addTodo={addTodo} />
+      <InputForm addTodo={addTodo} editTodo={editTodo} />
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
     </div>
   );
