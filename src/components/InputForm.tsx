@@ -1,8 +1,11 @@
 import React from 'react'
 
+interface IInputForm {
+  addTodo:AddFn;
+}
 
 
-const InputForm = () => {
+const InputForm:React.FC<IInputForm> = () => {
   
   return (
     <div className="input-form">
