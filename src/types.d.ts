@@ -8,6 +8,7 @@ interface TodoType {
     todos: TodoType[];
     toggleTodo:ToggleFn
     deleteTodo:DeleteFn
+    editTodo:EditTodoFn
     
   }
 
@@ -16,4 +17,8 @@ interface TodoType {
   type ToggleFn=(item:TodoType)=>void;
 
   type DeleteFn =(id:string | number)=>void;
+  
+  type EditTodoFn =(item:TodoType)=>void;
+
+  
   

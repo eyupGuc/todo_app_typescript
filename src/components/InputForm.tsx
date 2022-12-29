@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 interface IInputForm {
   addTodo: AddFn;
+  
 }
 
 const InputForm: React.FC<IInputForm> = ({ addTodo }) => {

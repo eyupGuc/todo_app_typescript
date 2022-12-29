@@ -52,11 +52,16 @@ getTodos();
 
     }catch(e){console.log(e);}
   }
-
+const editTodo:ToggleFn=(item)=>{
+  console.log(item);
+  try{}catch(e){
+    console.log(e)
+  }
+}
   return (
     <div className="main">
-      <InputForm addTodo={addTodo}/>
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <InputForm addTodo={addTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
     </div>
   );
 };
