@@ -36,6 +36,15 @@ getTodos()
     getTodos();
   }, []);
 
+  const toggleTodo:ToggleFn=async(item)=>{
+    try{
+      await axios.put(`${url}/${item.id}`,{...item,isDone:!item.isDone})
+      getTodos();
+    }catch(e){
+      console.log(e);
+    }
+  }
+
   return (
     <div className="main">
       <InputForm addTodo={addTodo}/>
@@ -45,3 +54,5 @@ getTodos()
 };
 
 export default Home;
+
+
