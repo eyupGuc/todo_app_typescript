@@ -6,6 +6,7 @@ interface TodoType {
 
   interface ITodoList {
     todos: TodoType[];
+    toggleTodo:ToggleFn
   }
 
   type AddFn = (text:string)=>void;
