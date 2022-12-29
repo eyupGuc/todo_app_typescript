@@ -8,6 +8,7 @@ interface TodoType {
     todos: TodoType[];
     toggleTodo:ToggleFn
     deleteTodo:DeleteFn
+    
   }
 
   type AddFn = (text:string)=>void;
