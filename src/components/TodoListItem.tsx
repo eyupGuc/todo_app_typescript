@@ -23,7 +23,7 @@ const TodoListItem: React.FC<IListItem> = ({ item, toggleTodo,deleteTodo,editTod
       <span className="task-icons" onClick={()=>deleteTodo(item.id)}>
         <AiFillDelete />
       </span>
-      <span className="task-icons" onClick={()=>editTodo(item)}><AiFillEdit/></span>
+      {/* <span className="task-icons" onClick={()=>editTodo(item)}><AiFillEdit/></span> */}
     </li>
   );
 };

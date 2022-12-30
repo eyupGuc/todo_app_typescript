@@ -5,11 +5,9 @@ import InputForm from "../components/InputForm";
 import TodoList from "../components/TodoList";
 const url = "https://63aad50bfdc006ba604d4b4a.mockapi.io/todos";
 
-
-
 const Home = () => {
   const [todos, setTodos] = useState<TodoType[]>([]);
-
+  const [info, setInfo] = useState();
 
   const getTodos = async () => {
     try {
@@ -21,55 +19,63 @@ const Home = () => {
     }
   };
 
-  const addTodo:AddFn = async(text)=>{
-    const newTodo={
-      task:text,
-      isDone: false
+  const addTodo: AddFn = async (text) => {
+    const newTodo = {
+      task: text,
+      isDone: false,
+    };
+    try {
+      await axios.post(url, newTodo);
+      getTodos();
+    } catch (e) {
+      console.log(e);
     }
-    try{
-await axios.post(url,newTodo)
-getTodos()
-
-    }catch(e){console.log(e)}
-
-  }
+  };
   useEffect(() => {
     getTodos();
   }, []);
 
-  const toggleTodo:ToggleFn=async(item)=>{
-    try{
-      await axios.put(`${url}/${item.id}`,{...item,isDone:!item.isDone})
+  const toggleTodo: ToggleFn = async (item) => {
+    try {
+      await axios.put(`${url}/${item.id}`, { ...item, isDone: !item.isDone });
       getTodos();
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
-  const deleteTodo:DeleteFn = async (id)=>{
-    try{
-await axios.delete(`${url}/${id}`)
-getTodos();
-
-    }catch(e){console.log(e);}
-  }
-const editTodo:ToggleFn=async(item)=>{
-  console.log(item);
-  try{
-
-
-  }catch(e){
-    console.log(e)
-  }
-}
+  const deleteTodo: DeleteFn = async (id) => {
+    try {
+      await axios.delete(`${url}/${id}`);
+      getTodos();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const editTodo: ToggleFn = async (item) => {
+    console.log(item);
+    try {
+      await axios.put(`${url}/${item.id}`, {
+        ...item,
+        id: item.id,
+        task: item.task,
+        isDone: item.isDone,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div className="main">
-      <InputForm addTodo={addTodo} editTodo={editTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} editTodo={editTodo} />
+      <InputForm addTodo={addTodo} />
+      <TodoList
+        todos={todos}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+        editTodo={editTodo}
+      />
     </div>
   );
 };
 
 export default Home;
-
-
