@@ -2,12 +2,12 @@ import React, { useState } from "react";
 
 interface IInputForm {
   addTodo: AddFn;
- 
+
 
   
 }
 
-const InputForm: React.FC<IInputForm> = ({ addTodo }) => {
+const InputForm: React.FC<IInputForm> = ({ addTodo}) => {
   const [task, setTask] = useState("");
 
   const handleClick = () => {
@@ -16,7 +16,7 @@ const InputForm: React.FC<IInputForm> = ({ addTodo }) => {
     setTask("");
   };
 
- 
+
 
 
   return (
